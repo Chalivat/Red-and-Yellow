@@ -13,9 +13,10 @@ public class Pickable : MonoBehaviour
     
     void Update()
     {
+
     }
 
-    void GetPicked(GameObject newAnchor)
+    void Pickup(GameObject newAnchor)
     {
         anchor = newAnchor;
         transform.SetParent(anchor.transform);

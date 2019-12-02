@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Cloud_AlphaBlended
+  m_Name: Cloud_AlphaBlended 1
   m_Shader: {fileID: -6465566751694194690, guid: 1403767b33726ac43a8dc090c1152cf8,
     type: 3}
   m_ShaderKeywords: _BLENDMODE_ALPHA _SURFACE_TYPE_TRANSPARENT

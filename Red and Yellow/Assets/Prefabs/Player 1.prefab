@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTopView: 0
-  speed: 40
+  speed: 0.5
   cam: {fileID: 0}
   groundCheckDistance: 1.1
   horizontal: Horizontal_P1

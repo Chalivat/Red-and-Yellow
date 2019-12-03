@@ -22,7 +22,11 @@ public class Player_Movement : MonoBehaviour
     
     void Update()
     {
-        
+        Debug.Log(Input.GetJoystickNames());
+        for (int i = 0; i < Input.GetJoystickNames().Length; i++)
+        {
+            Debug.Log(Input.GetJoystickNames()[i]);
+        }
     }
 
     void FixedUpdate()

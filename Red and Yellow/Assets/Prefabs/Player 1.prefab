@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5527364720680028152}
   - component: {fileID: 5527364720680028153}
   - component: {fileID: 5527364720680028159}
+  - component: {fileID: 1850859600}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Player
@@ -112,7 +113,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 52
   m_CollisionDetection: 0
 --- !u!114 &5527364720680028153
 MonoBehaviour:
@@ -127,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTopView: 1
-  speed: 10
+  speed: 5
   cam: {fileID: 0}
   horizontal: Horizontal1
   vertical: Vertical1
@@ -145,8 +146,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2751ba8c26da53344bfff65c662f9900, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CheckDistance: 0
-  pickButton: 
+  anchorRight: {fileID: 5527364721924782899}
+  anchorLeft: {fileID: 5527364721911512283}
+  CheckDistance: 3
+  pickButtonRight: GrabRight_P1
+  pickButtonLeft: GrabLeft_P1
+  pickableRight: {fileID: 0}
+  pickableLeft: {fileID: 0}
+--- !u!114 &1850859600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5527364720680028150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e52b2934144f414a9c4b479688ab869, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Shot: {fileID: 0}
+  shotRate: 0
+  cam: {fileID: 0}
+  RightWeapon: {fileID: 0}
+  LeftWeapon: {fileID: 0}
+  lookHor: lookHor1
+  lookVer: lookVer1
 --- !u!1 &5527364720973779136
 GameObject:
   m_ObjectHideFlags: 0

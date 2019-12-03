@@ -8,12 +8,15 @@ public class Player_Movement : MonoBehaviour
     public float speed;
     private Rigidbody rb;
     public Camera cam;
+    public float groundCheckDistance;
 
     [Header("Inputs")]
     public string horizontal;
     public string vertical;
     public string lookHor;
     public string lookVer;
+
+    private Vector3 lastDirection;
 
     void Start()
     {
@@ -22,26 +25,22 @@ public class Player_Movement : MonoBehaviour
     
     void Update()
     {
-        Debug.Log(Input.GetJoystickNames());
-        for (int i = 0; i < Input.GetJoystickNames().Length; i++)
-        {
-            Debug.Log(Input.GetJoystickNames()[i]);
-        }
     }
 
     void FixedUpdate()
     {
-        if (isTopView)
-        {
-            TopView();
-        }
-        else SideView();
+            Move();
+            //StayOverGround();
     }
 
-    void TopView()
+    void Move()
     {
         float x = Input.GetAxis(horizontal);
-        float z = -Input.GetAxis(vertical);
+        float z = 0;
+        if (isTopView)
+        {
+            z = -Input.GetAxis(vertical);
+        }
         float a = Input.GetAxisRaw(lookHor);
         float b = Input.GetAxisRaw(lookVer);
 
@@ -51,16 +50,34 @@ public class Player_Movement : MonoBehaviour
         Vector3 aim = rb.velocity;
         if (new Vector3(a,0,b).magnitude <.3f)
         {
-            transform.rotation = Quaternion.LookRotation(rb.velocity);
+            if (rb.velocity.magnitude > .25f)
+            {
+                transform.rotation = Quaternion.LookRotation(rb.velocity);
+                lastDirection = rb.velocity;
+            }
+            else transform.rotation = Quaternion.LookRotation(lastDirection);
         }
 
         Vector3 direction = AlignInput(x, z);
-        rb.velocity = direction * speed;
+        //direction = new Vector3(direction.x,rb.velocity.y,direction.z);
+        rb.AddForce(direction * speed, ForceMode.VelocityChange);
+
+        
     }
 
-    void SideView()
+    void StayOverGround()
     {
-
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position,Vector3.down,out hit,groundCheckDistance))
+        {
+            if (hit.transform.CompareTag("Ground"))
+            {
+                if (rb.velocity.y < 0)
+                {
+                    rb.velocity += Vector3.up * -rb.velocity.y;
+                }
+            }
+        }
     }
 
 

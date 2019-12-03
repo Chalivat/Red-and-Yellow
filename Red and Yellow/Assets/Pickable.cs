@@ -6,6 +6,8 @@ public class Pickable : MonoBehaviour
 {
     private bool held;
     public GameObject anchor;
+
+    public bool reverse;
     void Start()
     {
         
@@ -22,6 +24,11 @@ public class Pickable : MonoBehaviour
         transform.SetParent(anchor.transform);
         transform.localPosition = Vector3.zero;
         transform.rotation = anchor.transform.rotation;
+
+        if (reverse)
+        {
+            transform.localScale = new Vector3(-transform.localScale.x,transform.localScale.y,transform.localScale.z);
+        }
     }
 
     public bool isHeld()

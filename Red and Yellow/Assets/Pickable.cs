@@ -5,7 +5,7 @@ using UnityEngine;
 public class Pickable : MonoBehaviour
 {
     private bool held;
-    private GameObject anchor;
+    public GameObject anchor;
     void Start()
     {
         
@@ -16,10 +16,12 @@ public class Pickable : MonoBehaviour
 
     }
 
-    void Pickup(GameObject newAnchor)
+    public void Pickup(GameObject newAnchor)
     {
         anchor = newAnchor;
         transform.SetParent(anchor.transform);
+        transform.localPosition = Vector3.zero;
+        transform.rotation = anchor.transform.rotation;
     }
 
     public bool isHeld()

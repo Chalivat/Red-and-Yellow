@@ -38,13 +38,17 @@ public class Player_Movement : MonoBehaviour
     {
         float x = Input.GetAxis(horizontal);
         float z = -Input.GetAxis(vertical);
-        Debug.Log((x + " ; " + z));
-        float a = Input.GetAxis(lookHor);
-        float b = Input.GetAxis(lookVer);
+        float a = Input.GetAxisRaw(lookHor);
+        float b = Input.GetAxisRaw(lookVer);
 
-        Vector3 preAim = new Vector3(a,b).normalized;
-        Vector3 aim = AlignInput(a, -b);
-        transform.rotation = Quaternion.LookRotation(aim);
+        //Vector3 preAim = new Vector3(a,b).normalized;
+        //Vector3 aim = AlignInput(a, -b);
+        //transform.rotation = Quaternion.LookRotation(aim);
+        Vector3 aim = rb.velocity;
+        if (new Vector3(a,0,b).magnitude <.3f)
+        {
+            transform.rotation = Quaternion.LookRotation(rb.velocity);
+        }
 
         Vector3 direction = AlignInput(x, z);
         rb.velocity = direction * speed;

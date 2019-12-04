@@ -33,7 +33,6 @@ public class Player_Movement : MonoBehaviour
     void FixedUpdate()
     {
             Move();
-            //StayOverGround();
     }
 
     void Move()
@@ -73,27 +72,21 @@ public class Player_Movement : MonoBehaviour
     {
         Vector3 nextSpeed;
         nextSpeed = setDirection;
-
-        if (rb.velocity.magnitude < maxSpeed)
+        Vector3 newMagnitude;
+        newMagnitude = rb.velocity;
+        newMagnitude.y = 0;
+        if (newMagnitude.z < maxSpeed && nextSpeed.x > 0)
         {
-            rb.AddForce(nextSpeed * speed,ForceMode.VelocityChange);
+            rb.AddForce(nextSpeed * speed, ForceMode.VelocityChange);
         }
+        else if (newMagnitude.z > -maxSpeed && nextSpeed.x < 0)
+        {
+            rb.AddForce(nextSpeed * speed, ForceMode.VelocityChange);
+        }
+        
 
     }
-    void StayOverGround()
-    {
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position,Vector3.down,out hit,groundCheckDistance))
-        {
-            if (hit.transform.CompareTag("Ground"))
-            {
-                if (rb.velocity.y < 0)
-                {
-                    rb.velocity += Vector3.up * -rb.velocity.y;
-                }
-            }
-        }
-    }
+    
 
 
 

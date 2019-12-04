@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.HDPipeline;
 
 public class Player_Movement : MonoBehaviour
 {
     public bool isTopView;
     public float speed;
+    public float maxSpeed;
     private Rigidbody rb;
     public Camera cam;
     public float groundCheckDistance;
@@ -15,6 +17,7 @@ public class Player_Movement : MonoBehaviour
     public string vertical;
     public string lookHor;
     public string lookVer;
+    
 
     private Vector3 lastDirection;
 
@@ -60,11 +63,23 @@ public class Player_Movement : MonoBehaviour
 
         Vector3 direction = AlignInput(x, z);
         //direction = new Vector3(direction.x,rb.velocity.y,direction.z);
-        rb.AddForce(direction * speed, ForceMode.VelocityChange);
+        //rb.AddForce(direction * speed, ForceMode.VelocityChange);
+        SetSpeed(direction);
 
         
     }
 
+    private void SetSpeed(Vector3 setDirection)
+    {
+        Vector3 nextSpeed;
+        nextSpeed = setDirection;
+
+        if (rb.velocity.magnitude < maxSpeed)
+        {
+            rb.AddForce(nextSpeed * speed,ForceMode.VelocityChange);
+        }
+
+    }
     void StayOverGround()
     {
         RaycastHit hit;

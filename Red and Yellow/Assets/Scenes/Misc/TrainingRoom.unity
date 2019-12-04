@@ -208,7 +208,7 @@ Transform:
   m_GameObject: {fileID: 69958394}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1, y: 1.25, z: 6.27}
-  m_LocalScale: {x: 2.71, y: 1.5, z: 0.37}
+  m_LocalScale: {x: 2.71, y: 1.25, z: 0.37}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
@@ -440,7 +440,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1183024399 &817738361
 LookAtConstraint:
   m_ObjectHideFlags: 0
@@ -899,7 +899,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &1769460892
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1419,11 +1419,46 @@ PrefabInstance:
         type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 817738364}
+      objectReference: {fileID: 1769460893}
     - target: {fileID: 5527364720680028153, guid: 9238132a409cdcc4db64080263497ce6,
         type: 3}
-      propertyPath: speed
+      propertyPath: isTopView
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5527364720680028153, guid: 9238132a409cdcc4db64080263497ce6,
+        type: 3}
+      propertyPath: maxSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 352693496, guid: 9238132a409cdcc4db64080263497ce6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 352693496, guid: 9238132a409cdcc4db64080263497ce6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 352693496, guid: 9238132a409cdcc4db64080263497ce6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 352693496, guid: 9238132a409cdcc4db64080263497ce6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 352693496, guid: 9238132a409cdcc4db64080263497ce6, type: 3}
+      propertyPath: m_LocalPosition.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5527364720680028152, guid: 9238132a409cdcc4db64080263497ce6,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 116
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742411755996555714, guid: 9238132a409cdcc4db64080263497ce6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9238132a409cdcc4db64080263497ce6, type: 3}

@@ -67,11 +67,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5527364720680028148, guid: 9238132a409cdcc4db64080263497ce6,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: cdea7729c26a42b43880527cb001c0f5, type: 2}
     - target: {fileID: 5527364720680028153, guid: 9238132a409cdcc4db64080263497ce6,
         type: 3}
       propertyPath: horizontal
@@ -92,11 +87,11 @@ PrefabInstance:
       propertyPath: lookVer
       value: lookVer_P2
       objectReference: {fileID: 0}
-    - target: {fileID: 5527364720680028153, guid: 9238132a409cdcc4db64080263497ce6,
+    - target: {fileID: 5527364720680028148, guid: 9238132a409cdcc4db64080263497ce6,
         type: 3}
-      propertyPath: cam
+      propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2100000, guid: cdea7729c26a42b43880527cb001c0f5, type: 2}
     - target: {fileID: 5527364720680028159, guid: 9238132a409cdcc4db64080263497ce6,
         type: 3}
       propertyPath: pickButtonRight
@@ -114,6 +109,11 @@ PrefabInstance:
     - target: {fileID: 1850859600, guid: 9238132a409cdcc4db64080263497ce6, type: 3}
       propertyPath: lookVer
       value: lookVer_P2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742411755996555714, guid: 9238132a409cdcc4db64080263497ce6,
+        type: 3}
+      propertyPath: JumpInput
+      value: Vertical_P2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9238132a409cdcc4db64080263497ce6, type: 3}

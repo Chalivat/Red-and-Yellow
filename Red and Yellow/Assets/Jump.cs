@@ -12,6 +12,9 @@ public class Jump : MonoBehaviour
     public float lowJumpMultiplier;
 
     private bool wantedToJump;
+
+    public int maxJump;
+    private int jumpCount;
     
     void Start()
     {
@@ -29,6 +32,7 @@ public class Jump : MonoBehaviour
     void Update()
     {
         DoJump();
+        CheckGround();
         if (rb.velocity.y < 0)
         {
             rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
@@ -41,11 +45,12 @@ public class Jump : MonoBehaviour
 
     void DoJump()
     {
-        if (Input.GetAxis(JumpInput) < -.8f && !wantedToJump)
+        if (Input.GetAxis(JumpInput) < -.8f && !wantedToJump && jumpCount < maxJump)
         {
             wantedToJump = true;
             Debug.Log("LOLOLO");
             rb.AddForce(Vector3.up * JumpStrength);
+            jumpCount++;
         }
 
         if (wantedToJump && Input.GetAxis(JumpInput) >-.8f)
@@ -54,6 +59,17 @@ public class Jump : MonoBehaviour
         }
     }
 
+
+    void CheckGround()
+    {
+        if (Physics.Raycast(transform.position,Vector3.down,1.2f))
+        {
+            if (!wantedToJump)
+            {
+                jumpCount = 0;
+            }
+        }
+    }
     void OnDisable()
     {
         rb.useGravity = false;

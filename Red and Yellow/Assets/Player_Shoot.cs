@@ -8,6 +8,7 @@ public class Player_Shoot : MonoBehaviour
     public GameObject Shot;
     public float shotRate;
     public Camera cam;
+    public float RotateSpeed;
 
     public GameObject RightWeapon;
     public GameObject LeftWeapon;
@@ -19,11 +20,14 @@ public class Player_Shoot : MonoBehaviour
     public string lookVer;
 
     private Pick_Objects pickObjects;
+    private Player_Movement playerMovement;
 
+    
 
     void Start()
     {
         pickObjects = GetComponent<Pick_Objects>();
+        playerMovement = GetComponent<Player_Movement>();
         cam = Camera.main;
     }
     
@@ -39,20 +43,30 @@ public class Player_Shoot : MonoBehaviour
         float z = Input.GetAxis(lookVer);
         
         Vector3 aim = AlignInput(x, -z);
-        if (aim.magnitude >.1f)
+        if (aim.magnitude > .25f)
         {
-            transform.rotation = Quaternion.LookRotation(AlignInput(x,-z));
-            if (RightWeapon)
+            if (playerMovement.isTopView)
+            {
+                transform.rotation = Quaternion.Lerp(transform.rotation,Quaternion.LookRotation(AlignInput(x, -z)), RotateSpeed * Time.deltaTime);
+            }
+            else
+            {
+                Vector3 bis = AlignInputSide(x, -z);
+                //transform.rotation = Quaternion.LookRotation(new Vector3(z,x,0));
+                transform.rotation = Quaternion.Lerp(transform.rotation,Quaternion.LookRotation(bis), RotateSpeed * Time.deltaTime);
+            }
+
+            if (RightWeapon && rightWeapon)
             {
                 rightWeapon.Shoot();
             }
 
-            if (LeftWeapon)
+            if (LeftWeapon && leftWeapon)
             {
                 leftWeapon.Shoot();
             }
         }
-
+        
 
         //RightWeapon.shoot
         //LeftWeapon.shoot
@@ -94,6 +108,20 @@ public class Player_Shoot : MonoBehaviour
         Vector3 nextRot = newRot.eulerAngles;
         nextRot.x = 0;
         nextRot.z = 0;
+        newRot = Quaternion.Euler(nextRot);
+        direction = newRot * direction;
+
+        return direction;
+    }
+
+    Vector3 AlignInputSide(float x, float y)
+    {
+        Vector3 direction = new Vector3(0, y, x);
+        Vector3 bis = direction;
+        Quaternion newRot = Quaternion.LookRotation(cam.transform.forward);
+        Vector3 nextRot = newRot.eulerAngles;
+        nextRot.x = 0;
+        nextRot.y = 0;
         newRot = Quaternion.Euler(nextRot);
         direction = newRot * direction;
 

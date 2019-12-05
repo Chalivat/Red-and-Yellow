@@ -20,4 +20,9 @@ public class Weapon : MonoBehaviour
             time = 0;
         }
     }
+
+    public void SimpleShoot()
+    {
+        Instantiate(Shot, transform.position, Quaternion.LookRotation(transform.forward));
+    }
 }

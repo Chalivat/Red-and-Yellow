@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1836f4cf153f2e49bb6251ad3e9beb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Shot: {fileID: 0}
+  Shot: {fileID: 2347921134127450060, guid: 4ad06dea86da14d4d81fea289186ce3e, type: 3}
   ShotRate: 0.4
 --- !u!1 &8723072172821185707
 GameObject:
@@ -334,7 +334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1836f4cf153f2e49bb6251ad3e9beb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Shot: {fileID: 0}
+  Shot: {fileID: 2347921134127450060, guid: 4ad06dea86da14d4d81fea289186ce3e, type: 3}
   ShotRate: 0.3
 --- !u!1 &8723072173101752836
 GameObject:

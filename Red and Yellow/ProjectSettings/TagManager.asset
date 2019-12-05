@@ -7,6 +7,7 @@ TagManager:
   - Pickable
   - Portable
   - Ground
+  - Shot
   layers:
   - Default
   - TransparentFX

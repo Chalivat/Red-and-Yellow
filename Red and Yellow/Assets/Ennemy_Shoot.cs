@@ -10,6 +10,12 @@ public class Ennemy_Shoot : MonoBehaviour
     private Weapon rightWeapon, leftWeapon;
 
     public GameObject Target;
+
+    public float min, max;
+    private float nextShoot;
+    private float time;
+    private bool canShoot;
+
     void Start()
     {
         rightWeapon = RightWeapon.GetComponent<Weapon>();
@@ -20,18 +26,23 @@ public class Ennemy_Shoot : MonoBehaviour
     {
         Aim();
         Shoot();
+        DecideShoot();
     }
 
     void Shoot()
     {
-        if (rightWeapon)
+        if (canShoot)
         {
-            rightWeapon.Shoot();
-        }
+            canShoot = false;
+            if (rightWeapon)
+            {
+                rightWeapon.SimpleShoot();
+            }
 
-        if (leftWeapon)
-        {
-            leftWeapon.Shoot();
+            if (leftWeapon)
+            {
+                leftWeapon.SimpleShoot();
+            }
         }
     }
 
@@ -43,6 +54,17 @@ public class Ennemy_Shoot : MonoBehaviour
         nextRot.x = 0;
         newRot = Quaternion.Euler(nextRot);
         transform.rotation = newRot;
+    }
+
+    void DecideShoot()
+    {
+        time += Time.deltaTime;
+        if (time >= nextShoot)
+        {
+            time = 0;
+            nextShoot = Random.Range(min, max);
+            canShoot = true;
+        }
     }
 
     

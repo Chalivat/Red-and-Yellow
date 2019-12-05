@@ -6,6 +6,8 @@ public class shot_Behavior : MonoBehaviour
 {
     public float Speed;
     private Rigidbody rb;
+
+    public int damage;
     void Start()
     {
         rb = GetComponent<Rigidbody>();

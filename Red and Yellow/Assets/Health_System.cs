@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class Health_System : MonoBehaviour
@@ -7,6 +8,8 @@ public class Health_System : MonoBehaviour
 
     public float Health;
     private float maxHealth;
+
+    public bool invicible;
     void Start()
     {
         maxHealth = Health;
@@ -29,7 +32,7 @@ public class Health_System : MonoBehaviour
     public void Damage(int damage)
     {
         Health -= damage;
-        if (Health <= 0)
+        if (Health <= 0 && !invicible)
         {
             Death();
         }
@@ -37,7 +40,7 @@ public class Health_System : MonoBehaviour
 
     void Death()
     {
-
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -45,7 +48,6 @@ public class Health_System : MonoBehaviour
         if (other.CompareTag("Shot"))
         {
             Damage(other.transform.gameObject.GetComponent<shot_Behavior>().damage);
-            Debug.Break();
         }
     }
 

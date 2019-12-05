@@ -10,6 +10,7 @@ public class Ennemy_Shoot : MonoBehaviour
     private Weapon rightWeapon, leftWeapon;
 
     public GameObject Target;
+    public GameObject player1, player2;
 
     public float min, max;
     private float nextShoot;
@@ -20,10 +21,13 @@ public class Ennemy_Shoot : MonoBehaviour
     {
         rightWeapon = RightWeapon.GetComponent<Weapon>();
         leftWeapon = LeftWeapon.GetComponent<Weapon>();
+        player1 = GameObject.Find("Player 1");
+        player2 = GameObject.Find("Player 2");
     }
     
     void Update()
     {
+        chooseTarget();
         Aim();
         Shoot();
         DecideShoot();
@@ -65,6 +69,22 @@ public class Ennemy_Shoot : MonoBehaviour
             nextShoot = Random.Range(min, max);
             canShoot = true;
         }
+    }
+
+    void chooseTarget()
+    {
+        
+        float distance1, distance2;
+
+        distance1 = Vector3.Distance(transform.position, player1.transform.position);
+        distance2 = Vector3.Distance(transform.position, player2.transform.position);
+
+        if (distance1 >= distance2)
+        {
+            Target = player2;
+        }
+        else Target = player1;
+
     }
 
     

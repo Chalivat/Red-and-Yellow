@@ -666,6 +666,7 @@ GameObject:
   - component: {fileID: 315993873}
   - component: {fileID: 315993877}
   - component: {fileID: 315993878}
+  - component: {fileID: 315993879}
   m_Layer: 0
   m_Name: Ennemi
   m_TagString: Untagged
@@ -764,6 +765,8 @@ MonoBehaviour:
   RightWeapon: {fileID: 656036250}
   LeftWeapon: {fileID: 197492693}
   Target: {fileID: 1281798312}
+  player1: {fileID: 0}
+  player2: {fileID: 0}
   min: 0.3
   max: 2
 --- !u!114 &315993878
@@ -778,6 +781,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27f0c91e80a9336498916e7de55a4e3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &315993879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315993872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46113afe3b9cfaf4e874f1817f45d9c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 40
+  invicible: 0
 --- !u!1 &489881999
 GameObject:
   m_ObjectHideFlags: 0
@@ -2121,5 +2138,9 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1769460893}
+    - target: {fileID: 1281798313, guid: 9238132a409cdcc4db64080263497ce6, type: 3}
+      propertyPath: invicible
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9238132a409cdcc4db64080263497ce6, type: 3}

@@ -12,28 +12,31 @@ public class Player_Movement : MonoBehaviour
     public Camera cam;
     public float groundCheckDistance;
 
-    [Header("Inputs")]
-    public string horizontal;
+    [Header("Inputs")] public string horizontal;
     public string vertical;
     public string lookHor;
     public string lookVer;
-    
+
 
     private Vector3 lastDirection;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        if (isTopView)
+        {
+            GetComponent<Jump>().enabled = false;
+        }
+        else GetComponent<Jump>().enabled = true;
     }
-    
+
     void Update()
     {
     }
 
     void FixedUpdate()
     {
-            Move();
-            //StayOverGround();
+        Move();
     }
 
     void Move()
@@ -44,6 +47,7 @@ public class Player_Movement : MonoBehaviour
         {
             z = -Input.GetAxis(vertical);
         }
+
         float a = Input.GetAxisRaw(lookHor);
         float b = Input.GetAxisRaw(lookVer);
 
@@ -51,7 +55,7 @@ public class Player_Movement : MonoBehaviour
         //Vector3 aim = AlignInput(a, -b);
         //transform.rotation = Quaternion.LookRotation(aim);
         Vector3 aim = rb.velocity;
-        if (new Vector3(a,0,b).magnitude <.3f)
+        if (new Vector3(a, 0, b).magnitude < .3f)
         {
             if (rb.velocity.magnitude > .25f)
             {
@@ -66,34 +70,52 @@ public class Player_Movement : MonoBehaviour
         //rb.AddForce(direction * speed, ForceMode.VelocityChange);
         SetSpeed(direction);
 
-        
+
     }
 
     private void SetSpeed(Vector3 setDirection)
     {
+
+        
         Vector3 nextSpeed;
+        Vector3 applySpeed;
+        applySpeed = Vector3.zero;
         nextSpeed = setDirection;
-
-        if (rb.velocity.magnitude < maxSpeed)
+        Vector3 newMagnitude;
+        newMagnitude = rb.velocity;
+        newMagnitude.y = 0;
+        if (isTopView)
         {
-            rb.AddForce(nextSpeed * speed,ForceMode.VelocityChange);
-        }
+            Debug.Log(nextSpeed);
 
-    }
-    void StayOverGround()
-    {
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position,Vector3.down,out hit,groundCheckDistance))
-        {
-            if (hit.transform.CompareTag("Ground"))
+            rb.AddForce(nextSpeed * speed, ForceMode.VelocityChange);
+
+            if (rb.velocity.magnitude > maxSpeed)
             {
-                if (rb.velocity.y < 0)
-                {
-                    rb.velocity += Vector3.up * -rb.velocity.y;
-                }
+                rb.velocity = rb.velocity.normalized * maxSpeed;
             }
+
+            rb.velocity = rb.velocity * Mathf.Lerp(.5f,1,nextSpeed.magnitude);
+        }
+    
+
+    else
+
+    {
+        if (newMagnitude.z < maxSpeed && nextSpeed.x > 0)
+        {
+            rb.AddForce(nextSpeed * speed, ForceMode.VelocityChange);
+        }
+        else if (newMagnitude.z > -maxSpeed && nextSpeed.x < 0)
+        {
+            rb.AddForce(nextSpeed * speed, ForceMode.VelocityChange);
         }
     }
+
+}
+
+
+    
 
 
 

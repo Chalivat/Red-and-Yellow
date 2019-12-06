@@ -75,8 +75,6 @@ public class Player_Movement : MonoBehaviour
 
     private void SetSpeed(Vector3 setDirection)
     {
-
-        
         Vector3 nextSpeed;
         Vector3 applySpeed;
         applySpeed = Vector3.zero;
@@ -96,20 +94,24 @@ public class Player_Movement : MonoBehaviour
 
             rb.velocity = rb.velocity * Mathf.Lerp(.5f,1,nextSpeed.magnitude);
         }
-    
 
     else
 
-    {
-        if (newMagnitude.z < maxSpeed && nextSpeed.x > 0)
         {
-            rb.AddForce(nextSpeed * speed, ForceMode.VelocityChange);
+            //newMagnitude = AlignInputSide(newMagnitude.x,newMagnitude.y);
+            Quaternion nextRot = cam.gameObject.transform.rotation;
+            Vector3 newSpeed = nextRot * nextSpeed;
+            Debug.Log(newSpeed);
+
+            if (newMagnitude.z < maxSpeed && nextSpeed.x > 0)
+            {
+                rb.AddForce(nextSpeed * speed, ForceMode.VelocityChange);
+            }
+            else if (newMagnitude.z > -maxSpeed && nextSpeed.x < 0)
+            {
+                rb.AddForce(nextSpeed * speed, ForceMode.VelocityChange);
+            }
         }
-        else if (newMagnitude.z > -maxSpeed && nextSpeed.x < 0)
-        {
-            rb.AddForce(nextSpeed * speed, ForceMode.VelocityChange);
-        }
-    }
 
 }
 
@@ -126,6 +128,20 @@ public class Player_Movement : MonoBehaviour
         Vector3 nextRot = newRot.eulerAngles;
         nextRot.x = 0;
         nextRot.z = 0;
+        newRot = Quaternion.Euler(nextRot);
+        direction = newRot * direction;
+
+        return direction;
+    }
+
+    Vector3 AlignInputSide(float x, float y)
+    {
+        Vector3 direction = new Vector3(0, y, x);
+        Vector3 bis = direction;
+        Quaternion newRot = Quaternion.LookRotation(cam.transform.forward);
+        Vector3 nextRot = newRot.eulerAngles;
+        nextRot.x = 0;
+        nextRot.y = 0;
         newRot = Quaternion.Euler(nextRot);
         direction = newRot * direction;
 

@@ -606,7 +606,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1183024399 &817738361
 LookAtConstraint:
   m_ObjectHideFlags: 0
@@ -1057,7 +1057,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1769460892
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1455,7 +1455,7 @@ PrefabInstance:
         type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 1769460893}
+      objectReference: {fileID: 817738364}
     - target: {fileID: 5527364720680028153, guid: 9238132a409cdcc4db64080263497ce6,
         type: 3}
       propertyPath: isTopView

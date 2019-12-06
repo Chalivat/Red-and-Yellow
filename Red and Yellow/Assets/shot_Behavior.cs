@@ -13,5 +13,17 @@ public class shot_Behavior : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.velocity = transform.forward * Speed;
     }
-    
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Ennemy"))
+        {
+            Debug.Log(other);
+            Destroy(gameObject);
+        }
+    }
+
+
+
+
 }

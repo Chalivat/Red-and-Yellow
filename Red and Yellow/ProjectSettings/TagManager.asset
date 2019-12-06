@@ -8,6 +8,7 @@ TagManager:
   - Portable
   - Ground
   - Shot
+  - Ennemy
   layers:
   - Default
   - TransparentFX

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class Ennemy_Shoot : MonoBehaviour
@@ -17,6 +18,8 @@ public class Ennemy_Shoot : MonoBehaviour
     private float time;
     private bool canShoot;
 
+    public float maxShootDistance;
+
     void Start()
     {
         rightWeapon = RightWeapon.GetComponent<Weapon>();
@@ -27,10 +30,15 @@ public class Ennemy_Shoot : MonoBehaviour
     
     void Update()
     {
+        
         chooseTarget();
-        Aim();
-        Shoot();
-        DecideShoot();
+        if (Vector3.Distance(transform.position,Target.transform.position) <= maxShootDistance)
+        {
+            Aim();
+            Shoot();
+            DecideShoot();
+        }
+        
     }
 
     void Shoot()

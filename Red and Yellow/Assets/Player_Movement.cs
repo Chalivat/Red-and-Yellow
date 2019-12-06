@@ -86,7 +86,6 @@ public class Player_Movement : MonoBehaviour
         newMagnitude.y = 0;
         if (isTopView)
         {
-            Debug.Log(nextSpeed);
 
             rb.AddForce(nextSpeed * speed, ForceMode.VelocityChange);
 

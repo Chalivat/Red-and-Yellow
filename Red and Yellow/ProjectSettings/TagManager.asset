@@ -9,6 +9,7 @@ TagManager:
   - Ground
   - Shot
   - Ennemy
+  - Wall
   layers:
   - Default
   - TransparentFX

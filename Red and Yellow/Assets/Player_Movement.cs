@@ -98,16 +98,22 @@ public class Player_Movement : MonoBehaviour
     else
 
         {
-            //newMagnitude = AlignInputSide(newMagnitude.x,newMagnitude.y);
-            Quaternion nextRot = cam.gameObject.transform.rotation;
-            Vector3 newSpeed = nextRot * nextSpeed;
+            Quaternion newRot = cam.gameObject.transform.rotation;
+            Vector3 nextRot = newRot.eulerAngles;
+            nextRot.x = 0;
+            nextRot.z = 0;
+            nextRot.y += 180;
+            newRot = Quaternion.Euler(nextRot);
+            Vector3 newSpeed = newRot * nextSpeed;
+            Vector3 nextMagnitude = newRot * newMagnitude;
+            
             Debug.Log(newSpeed);
 
-            if (newMagnitude.z < maxSpeed && nextSpeed.x > 0)
+            if (nextMagnitude.x < maxSpeed && newSpeed.x > 0)
             {
                 rb.AddForce(nextSpeed * speed, ForceMode.VelocityChange);
             }
-            else if (newMagnitude.z > -maxSpeed && nextSpeed.x < 0)
+            else if (nextMagnitude.x > -maxSpeed && newSpeed.x < 0)
             {
                 rb.AddForce(nextSpeed * speed, ForceMode.VelocityChange);
             }

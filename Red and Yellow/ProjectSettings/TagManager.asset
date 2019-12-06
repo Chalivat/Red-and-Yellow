@@ -8,6 +8,7 @@ TagManager:
   - Portable
   - Ground
   - Shot
+  - Wall
   layers:
   - Default
   - TransparentFX

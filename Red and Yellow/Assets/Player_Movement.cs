@@ -107,7 +107,6 @@ public class Player_Movement : MonoBehaviour
             Vector3 newSpeed = newRot * nextSpeed;
             Vector3 nextMagnitude = newRot * newMagnitude;
             
-            Debug.Log(newSpeed);
 
             if (nextMagnitude.x < maxSpeed && newSpeed.x > 0)
             {

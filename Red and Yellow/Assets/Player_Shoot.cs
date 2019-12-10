@@ -52,9 +52,14 @@ public class Player_Shoot : MonoBehaviour
             else
             {
                 Vector3 bis = new Vector3(x,-z,0);
-                bis = cam.transform.rotation * bis;
-                
-                transform.rotation = Quaternion.LookRotation(bis);
+
+                Quaternion newRot = Quaternion.LookRotation(cam.transform.forward);
+                Vector3 nextRot = newRot.eulerAngles;
+                nextRot.x = 0;
+                nextRot.z = 0;
+                newRot = Quaternion.Euler(nextRot);
+                bis = newRot * bis;
+                transform.rotation = Quaternion.Lerp(transform.rotation,Quaternion.LookRotation(bis), RotateSpeed * Time.deltaTime);
 
             }
 

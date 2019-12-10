@@ -8,6 +8,7 @@ public class Player_Movement : MonoBehaviour
     public bool isTopView;
     public float speed;
     public float maxSpeed;
+    public float maxSpeedSide;
     private Rigidbody rb;
     public Camera cam;
     public float groundCheckDistance;
@@ -75,12 +76,8 @@ public class Player_Movement : MonoBehaviour
 
     private void SetSpeed(Vector3 setDirection)
     {
-        Vector3 nextSpeed;
-        Vector3 applySpeed;
-        applySpeed = Vector3.zero;
-        nextSpeed = setDirection;
-        Vector3 newMagnitude;
-        newMagnitude = rb.velocity;
+        Vector3 nextSpeed = setDirection;
+        Vector3 newMagnitude = rb.velocity;
         newMagnitude.y = 0;
         if (isTopView)
         {
@@ -98,27 +95,28 @@ public class Player_Movement : MonoBehaviour
     else
 
         {
-            Quaternion newRot = cam.gameObject.transform.rotation;
-            Vector3 nextRot = newRot.eulerAngles;
-            nextRot.x = 0;
-            nextRot.z = 0;
-            nextRot.y += 180;
-            newRot = Quaternion.Euler(nextRot);
-            Vector3 newSpeed = newRot * nextSpeed;
-            Vector3 nextMagnitude = newRot * newMagnitude;
+            newMagnitude = cam.transform.InverseTransformDirection(rb.velocity);
+            Vector3 bisSpeed = cam.transform.InverseTransformDirection(nextSpeed);
             
+            
+            Debug.DrawRay(transform.position, nextSpeed.normalized * 5f,Color.red);
+            Debug.DrawRay(transform.position, newMagnitude * 5f, Color.green);
 
-            if (nextMagnitude.x < maxSpeed && newSpeed.x > 0)
+            //Debug.Log(cam.transform.InverseTransformDirection(rb.velocity) + " : " + bisSpeed);
+
+                Debug.Log(newMagnitude.x + " : " + maxSpeedSide);
+
+            if (newMagnitude.x < maxSpeed && bisSpeed.x > 0)
             {
                 rb.AddForce(nextSpeed * speed, ForceMode.VelocityChange);
             }
-            else if (nextMagnitude.x > -maxSpeed && newSpeed.x < 0)
+            else if (newMagnitude.x > -maxSpeed && bisSpeed.x < 0)
             {
                 rb.AddForce(nextSpeed * speed, ForceMode.VelocityChange);
             }
         }
 
-}
+    }
 
 
     

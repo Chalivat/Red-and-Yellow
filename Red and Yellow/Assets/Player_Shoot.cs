@@ -52,15 +52,12 @@ public class Player_Shoot : MonoBehaviour
             else
             {
                 Vector3 bis = AlignInputSide(x, -z);
-                Debug.Log(bis);
-                //transform.rotation = Quaternion.LookRotation(new Vector3(z,x,0));
-                Quaternion newRot = cam.gameObject.transform.rotation;
+
+                Quaternion newRot = Quaternion.LookRotation(bis);
                 Vector3 nextRot = newRot.eulerAngles;
-                nextRot.y = 0;
-                nextRot.x = 0;
+                nextRot.z = 0;
                 newRot = Quaternion.Euler(nextRot);
-                Vector3 newLook = newRot * bis;
-                transform.rotation = Quaternion.Lerp(transform.rotation,Quaternion.LookRotation(newLook), RotateSpeed * Time.deltaTime);
+                transform.rotation = newRot;
             }
 
             if (RightWeapon && rightWeapon)

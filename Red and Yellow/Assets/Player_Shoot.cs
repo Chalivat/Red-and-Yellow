@@ -28,7 +28,7 @@ public class Player_Shoot : MonoBehaviour
     {
         pickObjects = GetComponent<Pick_Objects>();
         playerMovement = GetComponent<Player_Movement>();
-        cam = Camera.main;
+        cam = playerMovement.cam;
     }
     
     void Update()
@@ -51,9 +51,16 @@ public class Player_Shoot : MonoBehaviour
             }
             else
             {
-                Vector3 bis = AlignInputSide(x, -z);
-                //transform.rotation = Quaternion.LookRotation(new Vector3(z,x,0));
+                Vector3 bis = new Vector3(x,-z,0);
+
+                Quaternion newRot = Quaternion.LookRotation(cam.transform.forward);
+                Vector3 nextRot = newRot.eulerAngles;
+                nextRot.x = 0;
+                nextRot.z = 0;
+                newRot = Quaternion.Euler(nextRot);
+                bis = newRot * bis;
                 transform.rotation = Quaternion.Lerp(transform.rotation,Quaternion.LookRotation(bis), RotateSpeed * Time.deltaTime);
+
             }
 
             if (RightWeapon && rightWeapon)
@@ -116,12 +123,12 @@ public class Player_Shoot : MonoBehaviour
 
     Vector3 AlignInputSide(float x, float y)
     {
-        Vector3 direction = new Vector3(0, y, x);
+        Vector3 direction = new Vector3(0, y,x);
         Vector3 bis = direction;
         Quaternion newRot = Quaternion.LookRotation(cam.transform.forward);
         Vector3 nextRot = newRot.eulerAngles;
-        nextRot.x = 0;
-        nextRot.y = 0;
+        //nextRot.z = 0;
+        //nextRot.y = 0;
         newRot = Quaternion.Euler(nextRot);
         direction = newRot * direction;
 

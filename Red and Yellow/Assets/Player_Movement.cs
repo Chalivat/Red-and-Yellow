@@ -10,7 +10,7 @@ public class Player_Movement : MonoBehaviour
     public float maxSpeed;
     public float maxSpeedSide;
     private Rigidbody rb;
-    public Camera cam;
+    public GameObject cam;
     public float groundCheckDistance;
 
     [Header("Inputs")] public string horizontal;

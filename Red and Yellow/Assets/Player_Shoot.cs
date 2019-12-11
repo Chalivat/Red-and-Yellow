@@ -7,7 +7,7 @@ public class Player_Shoot : MonoBehaviour
     [Header("Main Shoot informations")]
     public GameObject Shot;
     public float shotRate;
-    public Camera cam;
+    public GameObject cam;
     public float RotateSpeed;
 
     public GameObject RightWeapon;

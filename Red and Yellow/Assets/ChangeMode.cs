@@ -1,12 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Cinemachine;
 
 public class ChangeMode : MonoBehaviour
 {
     public GameObject cible;
-    public GameObject camSettings;
 
     private void OnTriggerEnter(Collider other)
     {

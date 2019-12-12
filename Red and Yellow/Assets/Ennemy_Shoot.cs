@@ -70,13 +70,31 @@ public class Ennemy_Shoot : MonoBehaviour
 
     void DecideShoot()
     {
-        time += Time.deltaTime;
-        if (time >= nextShoot)
+        if (checkWall())
         {
-            time = 0;
-            nextShoot = Random.Range(min, max);
-            canShoot = true;
+            time += Time.deltaTime;
+            if (time >= nextShoot)
+            {
+                time = 0;
+                nextShoot = Random.Range(min, max);
+                canShoot = true;
+            }
         }
+    }
+
+    bool checkWall()
+    {
+        RaycastHit hit;
+        Debug.DrawRay(transform.position,Target.transform.position - transform.position,Color.magenta);
+        if (Physics.Raycast(transform.position, Target.transform.position - transform.position,out hit, Mathf.Infinity))
+        {
+            if (hit.transform.CompareTag("Player"))
+            {
+                return true;
+            }
+            else return false;
+        }
+        else return false;
     }
 
     void chooseTarget()

@@ -10,6 +10,7 @@ TagManager:
   - Shot
   - Ennemy
   - Wall
+  - Grille
   layers:
   - Default
   - TransparentFX

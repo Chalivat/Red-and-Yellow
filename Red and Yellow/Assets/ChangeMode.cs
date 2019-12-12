@@ -14,6 +14,10 @@ public class ChangeMode : MonoBehaviour
     bool isTriggered = false;
     int count = 0;
 
+    private void Start()
+    {
+        cam.SetActive(false);
+    }
     private void Update()
     {
         Debug.Log(count);

@@ -5,6 +5,7 @@ using UnityEngine;
 public class ChangeMode : MonoBehaviour
 {
     public GameObject cible;
+    public GameObject cible2;
     public GameObject cam;
     public GameObject vCam;
     public bool isCam = false;
@@ -31,7 +32,7 @@ public class ChangeMode : MonoBehaviour
                 player.GetComponent<Player_Movement>().isTopView = !player.GetComponent<Player_Movement>().isTopView;
                 player.GetComponent<Player_Movement>().enabled = false;
                 player.GetComponent<Player_Shoot>().enabled = false;
-                player2.GetComponent<Player_Movement>().isTopView = !player.GetComponent<Player_Movement>().isTopView;
+                player2.GetComponent<Player_Movement>().isTopView = !player2.GetComponent<Player_Movement>().isTopView;
                 player2.GetComponent<Player_Movement>().enabled = false;
                 player2.GetComponent<Player_Shoot>().enabled = false;
             }
@@ -39,7 +40,7 @@ public class ChangeMode : MonoBehaviour
             {
                 player.transform.position = cible.transform.position;
                 player.transform.rotation = Quaternion.LookRotation(inheritRotation);
-                player2.transform.position = cible.transform.position;
+                player2.transform.position = cible2.transform.position;
                 player2.transform.rotation = Quaternion.LookRotation(inheritRotation);
                 isCam = !isCam;
 

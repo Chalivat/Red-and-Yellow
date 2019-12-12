@@ -88,7 +88,7 @@ public class Ennemy_Shoot : MonoBehaviour
         Debug.DrawRay(transform.position,Target.transform.position - transform.position,Color.magenta);
         if (Physics.Raycast(transform.position, Target.transform.position - transform.position,out hit, Mathf.Infinity))
         {
-            if (hit.transform.CompareTag("Player"))
+            if (hit.transform.CompareTag("Player") || hit.transform.CompareTag("Grille"))
             {
                 return true;
             }

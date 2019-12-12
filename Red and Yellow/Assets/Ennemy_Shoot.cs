@@ -85,9 +85,10 @@ public class Ennemy_Shoot : MonoBehaviour
     bool checkWall()
     {
         RaycastHit hit;
-        Debug.DrawRay(transform.position,Target.transform.position - transform.position,Color.magenta);
+        
         if (Physics.Raycast(transform.position, Target.transform.position - transform.position,out hit, Mathf.Infinity))
         {
+            Debug.DrawRay(transform.position, hit.point - transform.position, Color.magenta);
             if (hit.transform.CompareTag("Player") || hit.transform.CompareTag("Grille"))
             {
                 return true;
@@ -95,6 +96,8 @@ public class Ennemy_Shoot : MonoBehaviour
             else return false;
         }
         else return false;
+
+        
     }
 
     void chooseTarget()

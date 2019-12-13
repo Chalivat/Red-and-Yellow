@@ -115,5 +115,10 @@ PrefabInstance:
       propertyPath: JumpInput
       value: Vertical_P2
       objectReference: {fileID: 0}
+    - target: {fileID: 1827599973140963917, guid: 9238132a409cdcc4db64080263497ce6,
+        type: 3}
+      propertyPath: playerNumber
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9238132a409cdcc4db64080263497ce6, type: 3}

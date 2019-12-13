@@ -7,6 +7,8 @@ public class Weapon : MonoBehaviour
 {
     [Header("Main informations")]
     public GameObject Shot;
+
+    public GameObject goodShot;
     public float ShotRate;
 
     private float time;
@@ -29,7 +31,12 @@ public class Weapon : MonoBehaviour
         time += Time.deltaTime;
         if (time >= ShotRate)
         {
-            Instantiate(Shot, transform.position, Quaternion.LookRotation(transform.forward));
+            if (transform.parent.CompareTag("Player")) 
+            {
+                Instantiate(goodShot, transform.position, Quaternion.LookRotation(transform.forward));
+            }
+            else Instantiate(Shot, transform.position, Quaternion.LookRotation(transform.forward));
+
             time = 0;
         }
     }

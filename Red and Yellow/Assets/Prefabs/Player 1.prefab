@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 1054617730}
   - component: {fileID: 4742411755996555714}
   - component: {fileID: 3243856961428240618}
-  - component: {fileID: 1281798313}
+  - component: {fileID: 1827599973140963917}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Player
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd093f370221bda4f865407cf79d51c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isTopView: 0
+  isTopView: 1
   speed: 2
   maxSpeed: 5
   maxSpeedSide: 2
@@ -243,7 +243,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1281798313
+--- !u!114 &1827599973140963917
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -252,11 +252,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 5527364720680028150}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46113afe3b9cfaf4e874f1817f45d9c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 65b184c99b176614c889f45a07a41545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeManagement: {fileID: 0}
+  uiManager: {fileID: 0}
+  playerNumber: 1
   Health: 100
-  invicible: 1
+  Pouf: {fileID: 1108982407705849317, guid: 236610476de6de046979fcd58bcd5c29, type: 3}
 --- !u!1 &5527364720973779136
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,7 +366,7 @@ GameObject:
   - component: {fileID: 5527364721911512281}
   m_Layer: 0
   m_Name: LeftHand
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -437,7 +440,7 @@ SphereCollider:
   m_GameObject: {fileID: 5527364721911512283}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -455,7 +458,7 @@ GameObject:
   - component: {fileID: 5527364721924782897}
   m_Layer: 0
   m_Name: RightHand
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -529,7 +532,7 @@ SphereCollider:
   m_GameObject: {fileID: 5527364721924782899}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}

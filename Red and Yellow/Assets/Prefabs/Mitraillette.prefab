@@ -4991,5 +4991,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Shot: {fileID: 2347921134127450060, guid: 4ad06dea86da14d4d81fea289186ce3e, type: 3}
+  goodShot: {fileID: 2347921134127450060, guid: a3a408dcb2e2d96479c9d9fd70d3cb9e,
+    type: 3}
   ShotRate: 0.1
   muzleFlash: {fileID: 4330087861859052953}

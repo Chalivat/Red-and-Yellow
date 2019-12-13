@@ -11,6 +11,7 @@ TagManager:
   - Ennemy
   - Wall
   - Grille
+  - GoodShot
   layers:
   - Default
   - TransparentFX

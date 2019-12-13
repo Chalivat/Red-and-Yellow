@@ -9,7 +9,8 @@ public class Health_System : MonoBehaviour
     public float Health;
     private float maxHealth;
 
-    public bool invicible;
+    public bool isPlayer;
+    
     void Start()
     {
         maxHealth = Health;
@@ -32,7 +33,7 @@ public class Health_System : MonoBehaviour
     public void Damage(int damage)
     {
         Health -= damage;
-        if (Health <= 0 && !invicible)
+        if (Health <= 0 && !isPlayer)
         {
             Death();
         }
@@ -45,7 +46,7 @@ public class Health_System : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Shot"))
+        if (other.CompareTag("GoodShot"))
         {
             Damage(other.transform.gameObject.GetComponent<shot_Behavior>().damage);
         }

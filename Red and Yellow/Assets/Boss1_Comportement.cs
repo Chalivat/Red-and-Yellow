@@ -29,6 +29,11 @@ public class Boss1_Comportement : MonoBehaviour
     {
         Move();
         Shoot();
+
+        if(vie <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void Move()

@@ -30078,6 +30078,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lazer
       objectReference: {fileID: 0}
+    - target: {fileID: 151722617870461192, guid: 5c10dca8830deee4ea62c36a5ac32747,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6200546463607770931, guid: 5c10dca8830deee4ea62c36a5ac32747,
         type: 3}
       propertyPath: m_LocalPosition.x

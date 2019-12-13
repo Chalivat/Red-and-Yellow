@@ -6859,6 +6859,16 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 9091094862930139297, guid: 3113f2e2c68a5b44ea24bb0b5e11ad70,
+        type: 3}
+      propertyPath: m_TagString
+      value: Grille
+      objectReference: {fileID: 0}
+    - target: {fileID: 7230587208582541622, guid: 3113f2e2c68a5b44ea24bb0b5e11ad70,
+        type: 3}
+      propertyPath: m_TagString
+      value: Grille
+      objectReference: {fileID: 0}
     - target: {fileID: -7591824806308581011, guid: 3113f2e2c68a5b44ea24bb0b5e11ad70,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

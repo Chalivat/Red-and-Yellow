@@ -13,7 +13,12 @@ public class HolderBehaviour : MonoBehaviour
         holderSpawned = new GameObject("outHolder");
         holderSpawned.transform.position = transform.position;
         holderSpawned.transform.rotation = transform.rotation;
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Pick_Objects>().anchorFront = holderSpawned;
+        transform.root.GetComponent<Pick_Objects>().anchorFront = holderSpawned;
     }
-    
+
+    void Update()
+    {
+        holderSpawned.transform.position = transform.position;
+        holderSpawned.transform.rotation = transform.rotation;
+    }
 }

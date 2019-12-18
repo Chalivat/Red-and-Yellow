@@ -42,5 +42,10 @@ public class Player_Life : MonoBehaviour
         {
             Damage(other.transform.gameObject.GetComponent<shot_Behavior>().damage);
         }
+
+        if (other.CompareTag("Beam"))
+        {
+            Damage(25);
+        }
     }
 }

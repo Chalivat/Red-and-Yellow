@@ -22,10 +22,10 @@ public class shot_Behavior : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (other.CompareTag("Wall"))
+        if (other.GetComponent<Collider>().CompareTag("Wall"))
         {
-            Debug.Log("JJJJJAZIJDFFFFFFFFFFFFFFFFFAZ0FJ0AIZZZZZZZZZZZZZ");
             //Debug.Break();
+            Debug.Log("hey");
             Destroy(gameObject);
         }
     }

@@ -281,8 +281,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.703057, y: 1, z: 1}
+  m_Center: {x: -0.06504333, y: 0, z: 0}
 --- !u!114 &8723072173242420382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,7 +302,7 @@ MonoBehaviour:
   player2: {fileID: 0}
   min: 0.3
   max: 2
-  maxShootDistance: 30
+  maxShootDistance: 15
 --- !u!114 &8723072173242420381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,7 +328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 40
-  invicible: 0
+  isPlayer: 0
 --- !u!1 &8723072174324946967
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,6 +24,8 @@ public class shot_Behavior : MonoBehaviour
 
         if (other.CompareTag("Wall"))
         {
+            Debug.Log("JJJJJAZIJDFFFFFFFFFFFFFFFFFAZ0FJ0AIZZZZZZZZZZZZZ");
+            //Debug.Break();
             Destroy(gameObject);
         }
     }

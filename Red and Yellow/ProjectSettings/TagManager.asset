@@ -12,6 +12,7 @@ TagManager:
   - Wall
   - Grille
   - GoodShot
+  - Beam
   layers:
   - Default
   - TransparentFX

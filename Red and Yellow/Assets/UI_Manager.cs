@@ -9,10 +9,11 @@ public class UI_Manager : MonoBehaviour
     public Animator heartAnimator;
     public float Life1, Life2;
     public Image imageLife1, imageLife2;
+
     void Start()
     {
         imageLife1.fillAmount = 1;
-        imageLife2.fillAmount = 2;
+        imageLife2.fillAmount = 1;
     }
     
     void Update()
@@ -27,6 +28,7 @@ public class UI_Manager : MonoBehaviour
     public void DamagePlayer1(int playerNumber,float damage)
     {
         HeartBeat();
+
         if (playerNumber == 1)
         {
             Life1 -= damage;

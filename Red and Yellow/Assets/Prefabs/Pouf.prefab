@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1108982407705849318}
   - component: {fileID: 1108982407705849319}
   - component: {fileID: 1108982407705849316}
+  - component: {fileID: 4791862724425298272}
   m_Layer: 0
   m_Name: Pouf
   m_TagString: Untagged
@@ -4812,6 +4813,18 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &4791862724425298272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1108982407705849317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6169986e1376604f8ee75b8a1b3818f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7020281909432788011
 GameObject:
   m_ObjectHideFlags: 0
@@ -4858,7 +4871,7 @@ ParticleSystem:
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0

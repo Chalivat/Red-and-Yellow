@@ -302,7 +302,7 @@ MonoBehaviour:
   player2: {fileID: 0}
   min: 0.3
   max: 2
-  maxShootDistance: 15
+  maxShootDistance: 22
 --- !u!114 &8723072173242420381
 MonoBehaviour:
   m_ObjectHideFlags: 0

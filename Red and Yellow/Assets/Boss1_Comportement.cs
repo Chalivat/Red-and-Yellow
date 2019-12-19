@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Boss1_Comportement : MonoBehaviour
 {
@@ -19,7 +20,12 @@ public class Boss1_Comportement : MonoBehaviour
     Transform target;
     float time = 0;
     int vie = 2000;
+    public Slider sliderHP;
     bool isLazering = false;
+
+    float animationTime = 0;
+    public GameObject positionDepart;
+    public GameObject positionArrivee;
 
     void Start()
     {
@@ -31,19 +37,31 @@ public class Boss1_Comportement : MonoBehaviour
     
     void Update()
     {
-        if (isLazering)
+        animationTime += Time.deltaTime;
+
+        if(animationTime <= 7)
         {
-            Lazering();
+            transform.position = new Vector3(transform.position.x,
+            Mathf.SmoothStep(positionDepart.transform.position.y, positionArrivee.transform.position.y, 0.4f), transform.position.z) + offset;
         }
         else
         {
-            Move();
-            Shoot();
-        }
+            if (isLazering)
+            {
+                Lazering();
+            }
+            else
+            {
+                Move();
+                Shoot();
+            }
 
-        if(vie <= 0)
-        {
-            Destroy(gameObject);
+            sliderHP.value = vie;
+
+            if (vie <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -62,7 +80,7 @@ public class Boss1_Comportement : MonoBehaviour
             target = player1.transform;
         }
 
-        if( vie == 1500)
+        if( vie == 1500  || vie == 1100 || vie == 700 || vie == 300)
         {
             isLazering = true;
         }
@@ -91,7 +109,7 @@ public class Boss1_Comportement : MonoBehaviour
         transform.position = new Vector3(transform.position.x,
             Mathf.SmoothStep(transform.position.y, target.transform.position.y, 0.1f), transform.position.z);
 
-        if (time >= 1)
+        if (time >= 2.5f)
         {
             lazerTime -= Time.deltaTime;
             if(lazerTime > 0)

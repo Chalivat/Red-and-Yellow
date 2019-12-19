@@ -19,6 +19,8 @@ public class Player_Life : MonoBehaviour
         
     }
 
+    
+
     public void Damage(int damage)
     {
         timeManagement.FreezeTime(20);
@@ -33,7 +35,7 @@ public class Player_Life : MonoBehaviour
     void Death()
     {
         Instantiate(Pouf, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -43,9 +45,9 @@ public class Player_Life : MonoBehaviour
             Damage(other.transform.gameObject.GetComponent<shot_Behavior>().damage);
         }
 
-        if (other.CompareTag("Beam"))
-        {
-            Damage(25);
-        }
+        //if (other.CompareTag("Beam"))
+        //{
+        //    Damage(25);
+        //}
     }
 }

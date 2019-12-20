@@ -15,7 +15,8 @@ public class scene1_Condition : MonoBehaviour
     
     void Update()
     {
-        if(player1.transform.childCount >= 6 || player2.transform.childCount >= 6)
+        Debug.Log(player1.transform.childCount);
+        if(player1.transform.Find("RightHand").transform.childCount >= 1 && player1.transform.Find("LeftHand").transform.childCount >= 1 && player2.transform.Find("LeftHand").transform.childCount >= 1 && player1.transform.Find("RightHand").transform.childCount >= 1)
         {
             SceneManager.LoadScene("Example_Cinemachine");
         }

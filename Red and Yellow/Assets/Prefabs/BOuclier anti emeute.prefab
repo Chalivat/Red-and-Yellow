@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anchor: {fileID: 0}
-  circle: {fileID: 0}
+  circle: {fileID: 1012071107496686026}
   reverse: 0
 --- !u!65 &401661461016119874
 BoxCollider:

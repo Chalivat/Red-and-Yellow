@@ -39,6 +39,7 @@ public class Pick_Objects : MonoBehaviour
             if (pickableRight)
             {
                 pickableRight.transform.SetParent(null);
+                pickableRight.transform.position = anchorFront.transform.position;
                 pickableRight = null;
                 holdingRight = false;
             }
@@ -49,6 +50,7 @@ public class Pick_Objects : MonoBehaviour
             if (pickableLeft)
             {
                 pickableLeft.transform.SetParent(null);
+                pickableLeft.transform.position = anchorFront.transform.position;
                 pickableLeft = null;
                 holdingLeft = false;
             }

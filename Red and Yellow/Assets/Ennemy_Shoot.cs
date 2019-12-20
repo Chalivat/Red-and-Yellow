@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.UI;
 
 public class Ennemy_Shoot : MonoBehaviour
 {
+    public bool isSideView;
+
     public GameObject RightWeapon;
     public GameObject LeftWeapon;
 
@@ -16,7 +19,7 @@ public class Ennemy_Shoot : MonoBehaviour
     public float min, max;
     private float nextShoot;
     private float time;
-    private bool canShoot;
+    public bool canShoot;
 
     public float maxShootDistance;
 
@@ -62,8 +65,11 @@ public class Ennemy_Shoot : MonoBehaviour
     {
         Quaternion newRot = Quaternion.LookRotation(Target.transform.position - transform.position);
         Vector3 nextRot = newRot.eulerAngles;
-        nextRot.z = 0;
-        nextRot.x = 0;
+        if (!isSideView)
+        {
+            nextRot.z = 0;
+            nextRot.x = 0;
+        }
         newRot = Quaternion.Euler(nextRot);
         transform.rotation = newRot;
     }
@@ -88,6 +94,7 @@ public class Ennemy_Shoot : MonoBehaviour
         
         if (Physics.Raycast(transform.position, Target.transform.position - transform.position,out hit, Mathf.Infinity))
         {
+            Debug.Log(hit);
             Debug.DrawRay(transform.position, hit.point - transform.position, Color.magenta);
             if (hit.transform.CompareTag("Player") || hit.transform.CompareTag("Grille"))
             {
@@ -114,7 +121,32 @@ public class Ennemy_Shoot : MonoBehaviour
         }
         else Target = player1;
 
+        //if (distance1 >= distance2)
+        //{
+        //    if (player2.activeSelf)
+        //    {
+        //        Target = player2;
+        //    }
+        //    else if (player1.activeSelf)
+        //    {
+        //        Target = player1;
+        //    }
+
+        //}
+        //else
+        //{
+        //    if (player1.activeSelf)
+        //    {
+        //        Target = player1;
+        //    }
+        //    else if (player2.activeSelf)
+        //    {
+        //        Target = player2;
+        //    }
+
+    }
+
     }
 
     
-}
+

@@ -67,7 +67,7 @@ public class ChangeMode : MonoBehaviour
                 player.GetComponent<Jump>().enabled = true;
                 player2.GetComponent<Player_Movement>().enabled = true;
                 player2.GetComponent<Player_Shoot>().enabled = true;
-                player2.GetComponent<Jump>().enabled = true;
+                player2.GetComponent<Jump>().enabled = !player2.GetComponent<Jump>().enabled;
             }
             if(count == 4)
             {
